@@ -1,0 +1,18 @@
+web:
+    image: shincoder/homestead:php7.1
+    restart: unless-stopped
+    ports:
+        - "8000:80" # web
+        - "2222:22" # ssh
+    volumes:
+        - ./:/var/www/html # all apps
+    links:
+        - mysql
+
+mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+        - ~/volumes/mysql:/var/lib/mysql
