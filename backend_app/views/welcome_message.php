@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Welcome to cuddlynest Backend app!</title>
 
 	<style type="text/css">
 
@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to cuddlynest app!</h1>
+	<h1>Welcome to cuddlynest Backend app! Hmmm</h1>
 </div>
 
 </body>
