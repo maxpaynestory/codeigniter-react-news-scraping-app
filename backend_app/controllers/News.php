@@ -16,5 +16,9 @@ class News extends REST_Controller {
     public function index_get() {
         $this->response(['help'=>true]);
     }
+    
+    public function index_delete($id) {
+        $this->response(['deleted'=>true]);
+    }
 
 }
