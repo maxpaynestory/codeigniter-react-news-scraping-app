@@ -11,6 +11,8 @@ web:
 
 mysql:
     image: mysql:5.7
+    ports:
+      - "3306:3306"
     restart: unless-stopped
     environment:
         MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
