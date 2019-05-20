@@ -44,7 +44,7 @@ Press enter as root password is empty. Then
 ```
 create database cuddlynest_db;
 CREATE TABLE `cuddlynest_db`.`news` (
-  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `url` VARCHAR(255) NOT NULL,
   `points` VARCHAR(45) NOT NULL,
