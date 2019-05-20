@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,11 +15,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class News extends REST_Controller {
 
     public function index_get() {
-        $this->response(['help'=>true]);
+        $this->load->model('newsmodel');
+        $this->response(['objects' => $this->newsmodel->getAll()]);
     }
-    
+
     public function index_delete($id) {
-        $this->response(['deleted'=>true]);
+        $this->load->model('newsmodel');
+        try{
+            $this->newsmodel->delete($id);
+            $this->response(['deleted' => true], 202);
+        }catch(Exception $e){
+            $this->response(['deleted' => false], 404);
+        }
     }
 
 }
