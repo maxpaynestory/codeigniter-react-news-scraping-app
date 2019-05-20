@@ -18,3 +18,16 @@ mysql:
         MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     volumes:
         - ~/volumes/mysql:/var/lib/mysql
+
+frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: node.Dockerfile
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
