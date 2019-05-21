@@ -2,13 +2,17 @@ version: '3.7'
 
 services:
     web:
-        image: shincoder/homestead:php7.1
+        container_name: backend_app
+        build:
+            context: .
+            dockerfile: Dockerfile
         restart: unless-stopped
+        volumes:
+            - './server:/var/www/html'
+            - '/var/www/html/vendor'
         ports:
             - "8000:80" # web
             - "2222:22" # ssh
-        volumes:
-            - ./server:/var/www/html # all apps
         links:
             - mysql
 

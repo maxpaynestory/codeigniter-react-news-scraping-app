@@ -20,7 +20,7 @@ composer install
 
 
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 After app is up and running inside docker 
