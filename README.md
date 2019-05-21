@@ -1,4 +1,4 @@
-# Cuddlynest YCombinator news app
+# App that scrapes ycombinator news and show inside reactjs frontend
 
 ### Prerequisites
 PHP7.0
