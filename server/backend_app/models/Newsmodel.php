@@ -15,8 +15,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Newsmodel extends CI_Model {
 
-    public function createBulk($input_array) {
-        $this->db->truncate('news');
+    public function createBulk($input_array, $truncate = false) {
+        if($truncate){
+            $this->db->truncate('news');
+        }
         $data = [];
         foreach ($input_array as $news) {
             array_push($data, [
@@ -30,7 +32,7 @@ class Newsmodel extends CI_Model {
         }
         $this->db->insert_batch('news', $data);
     }
-
+    
     public function delete($id) {
         $db = $this->db;
         /* @var $db CI_DB_query_builder */

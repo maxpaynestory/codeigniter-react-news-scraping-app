@@ -38,17 +38,24 @@ class Newsparser {
             $title = $node1->text();
             $url = $node1->attr('href');
             $score_node = $crawler->filter('span#score_' . $id);
-            $points = (int) preg_replace("/[^0-9]/", '', $score_node->text());
-            $next_nodes = $score_node->nextAll();
-            $username = $next_nodes->filter('a.hnuser')->text();
-            $number_of_coments = (int) preg_replace("/[^0-9]/", '', $next_nodes->last()->text());
+            if($score_node->count() > 0){
+                $points = (int) preg_replace("/[^0-9]/", '', $score_node->text());
+                $next_nodes = $score_node->nextAll();
+                $username = $next_nodes->first()->text();
+                $number_of_comments = (int) preg_replace("/[^0-9]/", '', $next_nodes->last()->text());
+            }else{
+                $points = 0;
+                $username = 'n/a';
+                $number_of_comments = 0;
+            }
+            
 
             array_push($news, [
                 'title' => $title,
                 'url' => $url,
                 'points' => $points,
                 'username' => $username,
-                'number_of_comments' => $number_of_coments
+                'number_of_comments' => $number_of_comments
             ]);
         });
         return $news;

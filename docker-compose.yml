@@ -1,33 +1,36 @@
-web:
-    image: shincoder/homestead:php7.1
-    restart: unless-stopped
-    ports:
-        - "8000:80" # web
-        - "2222:22" # ssh
-    volumes:
-        - ./server:/var/www/html # all apps
-    links:
-        - mysql
+version: '3.7'
 
-mysql:
-    image: mysql:5.7
-    ports:
-      - "3306:3306"
-    restart: unless-stopped
-    environment:
-        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-    volumes:
-        - ~/volumes/mysql:/var/lib/mysql
+services:
+    web:
+        image: shincoder/homestead:php7.1
+        restart: unless-stopped
+        ports:
+            - "8000:80" # web
+            - "2222:22" # ssh
+        volumes:
+            - ./server:/var/www/html # all apps
+        links:
+            - mysql
 
-frontend:
-    container_name: frontend
-    build:
-      context: .
-      dockerfile: node.Dockerfile
-    volumes:
-      - './frontend:/app'
-      - '/app/node_modules'
-    ports:
-      - '3000:3000'
-    environment:
-      - NODE_ENV=development
+    mysql:
+        image: mysql:5.7
+        ports:
+          - "3306:3306"
+        restart: unless-stopped
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - ~/volumes/mysql:/var/lib/mysql
+
+    frontend:
+        container_name: frontend
+        build:
+          context: .
+          dockerfile: node.Dockerfile
+        volumes:
+          - './frontend:/app'
+          - '/app/node_modules'
+        ports:
+          - '3000:3000'
+        environment:
+          - NODE_ENV=development
