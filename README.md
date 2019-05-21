@@ -1,10 +1,6 @@
 # App that scrapes ycombinator news and show inside reactjs frontend
 
 ### Prerequisites
-PHP7.0
-
-Composer
-
 docker
 
 docker-compose
@@ -12,11 +8,6 @@ docker-compose
 
 ### Setup
 
-Install composer libraries of server inside server folder
-
-```
-composer install
-```
 
 
 ```
