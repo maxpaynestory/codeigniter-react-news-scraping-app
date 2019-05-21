@@ -2,47 +2,46 @@
 
 ### Prerequisites
 PHP7.0
+
 Composer
+
 docker
-docker compose
+
+docker-compose
 
 
 ### Setup
 
-To install backend app dependencies
+Install composer libraries of server inside server folder
 
 ```
 composer install
 ```
 
-```
-docker up -d
-```
-
-After app is up and running inside docker containers
-
-use
 
 ```
-docker ps
+docker-compose up -d
 ```
 
-Use the mysql container pid to ssh to the machine and create database
+After app is up and running inside docker 
 
-```
-docker exec -it db45ad5bc522 bash
-```
+### DB
 
-Once you are inside mysql container connect to mysql and create database
+Use any mysql client and connect to docker mysql db using credentials
 
-```
-mysql -u root -p
-```
+username: root
 
-Press enter as root password is empty. Then
+password:(empty)
 
-```
+port: 3306
+
+host: localhost
+
+
+Then create database and a table
+
 create database cuddlynest_db;
+
 CREATE TABLE `cuddlynest_db`.`news` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
@@ -53,9 +52,11 @@ CREATE TABLE `cuddlynest_db`.`news` (
   `created_at` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = MyISAM;
-```
-
-exit the container, and run migrations available inside backend app
 
 
+### Urls
+
+frontend is running on http://localhost:3000
+
+server is running at http://localhost:8000
 
