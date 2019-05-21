@@ -81,14 +81,18 @@ class App extends React.Component {
 		axios.delete(this.BaseUrl + '/news/' + id)
 		.then(function (response) {
 			// handle success
-			const updatednews = self.state.news.filter((n) => {
-				if(n.id !== id){
-					return n;
-				}
-			});
+			if(response.status = 202){
+				const updatednews = self.state.news.filter((n) => {
+					if(n.id !== id){
+						return n;
+					}
+				});
+				self.setState({
+					news: updatednews
+				});
+			}
 			self.setState({
-				blocking:false,
-				news: updatednews
+				blocking:false
 			});
 		})
 		.catch(function (error) {
